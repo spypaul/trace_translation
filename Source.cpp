@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <String>
 #include <sstream>
 #include <set>
 #include <list>
