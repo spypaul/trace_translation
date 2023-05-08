@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+//#include <String>
 #include <sstream>
 #include <set>
 #include <list>
@@ -29,6 +30,8 @@ int main() {
 	map<uint64_t, string> tm;
 
 	set<uint64_t>mfootprint;
+	bool va{ 0 };
+
 
 	cout << "Please enter the trace file name (*.pout or *.vout): ";
 
@@ -47,9 +50,11 @@ int main() {
 	}
 	if (filename.find(".pout") != string::npos) {
 		outname = filename.replace(filename.find(".pout"), 6, ".trace");
+		va = 0;
 	}
 	if (filename.find(".vout") != string::npos) {
 		outname = filename.replace(filename.find(".vout"), 6, ".trace");
+		va = 1;
 	}
 
 
@@ -58,7 +63,6 @@ int main() {
 	while (!inputfile.eof()) {
 		string line{ "" };
 		getline(inputfile, line);
-		bool va{ 0 };
 
 		if ( va && (line.size() < 3 || !(line[1] == 'R' || line[1] == 'W'))) { 
 			continue; 
